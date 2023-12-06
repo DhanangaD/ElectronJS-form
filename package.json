@@ -1,5 +1,27 @@
 {
   "devDependencies": {
     "tailwindcss": "^3.3.6"
+  },
+  "name": "electron-login",
+  "description": "",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhanangaD/Electron-Login.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DhanangaD/Electron-Login/issues"
+  },
+  "homepage": "https://github.com/DhanangaD/Electron-Login#readme",
+  "dependencies": {
+    "electron": "^28.0.0",
+    "sqlite3": "^5.1.6"
   }
 }

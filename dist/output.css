@@ -548,6 +548,10 @@ video {
   margin: 1.25rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .flex {
   display: flex;
 }
@@ -647,10 +651,6 @@ video {
   padding-right: 5rem;
 }
 
-.pr-40 {
-  padding-right: 10rem;
-}
-
 .text-center {
   text-align: center;
 }
@@ -725,10 +725,6 @@ video {
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
-}
-
-.focus-visible\:outline:focus-visible {
-  outline-style: solid;
 }
 
 .focus-visible\:outline-2:focus-visible {
