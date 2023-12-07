@@ -20,8 +20,8 @@ function createWindow() {
 // Receive login attempt from renderer process
 ipcMain.on("login", (event, { username, password }) => {
   // Check username and password in the database
-  const query = "SELECT * FROM users WHERE ( username = ? OR email = ?) AND password = ?";
-  db.get(query, [username, email, password], (err, row) => {
+  const query = "SELECT * FROM users WHERE username = ? AND password = ?";
+  db.get(query, [username, password], (err, row) => {
 
       // console.log(username);
       // console.log(password);

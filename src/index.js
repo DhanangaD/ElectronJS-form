@@ -2,15 +2,15 @@ const { electron, ipcRenderer  } = require("electron");
 
       document.getElementById("btnLogin").addEventListener("click", () => {
         const username = document.getElementById("username").value;
-        const email = document.getElementById("username").value;
+        // const email = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
         console.log(username);
         console.log(password);
-        console.log(email);
+        // console.log(email);
 
         // Send login attempt to main process
-        ipcRenderer.send("login", { username,email, password });
+        ipcRenderer.send("login", { username, password });
       });
 
       // Receive login response from main process
