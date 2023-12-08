@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./dist/output.css" rel="stylesheet" type="text/css" />
+    <title>Dashboard</title>
 </head>
-<body>
-  <h1>Welcome to the Dashboard!</h1>
+<body class="font-sans bg-white-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 px-4 py-8 text-black bg-gray-100">
+            <h1 class="mb-8 text-2xl font-semibold">Dashboard</h1>
+            <ul class="space-y-2">
+                <li>
+                    <a href="#" class="block px-4 py-2 rounded-md hover:bg-gray-300">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-4 py-2 rounded-md hover:bg-gray-300">Profile</a>
+                </li>
+                <li>
+                    <a href="#" class="block px-4 py-2 rounded-md hover:bg-gray-300">Settings</a>
+                </li>
+                <!-- Add more menu items as needed -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-10">
+            <h1 class="mb-6 text-3xl font-semibold">Welcome to the Dashboard!</h1>
+            <div class="p-6 bg-white rounded-md shadow-md">
+                <!-- Dashboard content goes here -->
+                <p>Your dashboard content goes here.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

@@ -23,6 +23,6 @@ const { electron, ipcRenderer  } = require("electron");
         } else {
           // Display error message
           console.error(message);
-          alert("Login failed. Please check your credentials.");
+          // alert("Login failed. Please check your credentials.");
         }
       });
