@@ -13,12 +13,14 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    title:"Parent"
   });
   mainWindow.loadFile("src/index.html");
+  mainWindow.setMenuBarVisibility(false);
 }
 
 // Receive login attempt from renderer process
-ipcMain.on("login", (event, { username, password }) => {
+ipcMain.on("login", (event, { username,  password }) => {
   // Check username and password in the database
   const query = "SELECT * FROM users WHERE username = ? AND password = ?";
   db.get(query, [username, password], (err, row) => {
@@ -40,7 +42,8 @@ ipcMain.on("login", (event, { username, password }) => {
       });
 
       // Open the dashboard window
-      openDashboardWindow();
+      // openDashboardWindow();
+      loadPage("dashboard.html");
     } else { 
       // console.log(username);
       // console.log(password);
@@ -50,23 +53,55 @@ ipcMain.on("login", (event, { username, password }) => {
         success: false,
         message: "Incorrect username or password",
       });
+      openErrorPopup();
     }
   });
 });
 
-function openDashboardWindow() {
-  const dashboardWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
+// Handle other routes
+ipcMain.on("load-page", (event, pageName) => {
+  loadPage(pageName);
+});
 
+function loadPage(pageName) {
+  mainWindow.loadFile(path.join(__dirname, pageName));
+}
+
+function showErrorDialog(message) {
+  dialog.showErrorBox("Login Error", message);
+}
+
+// function openDashboardWindow() {
+//   const dashboardWindow = new BrowserWindow({
+//     width: 800,
+//     height: 600,
+//     webPreferences: {
+
+//       nodeIntegration: true,
+//       contextIsolation: false,
+      
+//     },
+//   });
+
+//   dashboardWindow.loadFile(path.join(__dirname, "dashboard.html"));
+//   dashboardWindow.setMenuBarVisibility(false);
+// }
+
+function openErrorPopup() {
+  const errorPopup = new BrowserWindow({
+    width: 500,
+    height: 320,
+    webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      
     },
+    parent: mainWindow,
+    modal: true,
+    title:"Child"
   });
 
-  dashboardWindow.loadFile(path.join(__dirname, "dashboard.html"));
+  errorPopup.loadFile(path.join(__dirname, "error.html"));
+  errorPopup.setMenuBarVisibility(false);
 }
 
 app.whenReady().then(createWindow);
